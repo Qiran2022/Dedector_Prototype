@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Detector_Prototype</string>
+    <string name="welcome_to_skin_disease_detector">Welcome to skin disease detector!</string>
+    <string name="disease_analysis">Disease Analysis</string>
+    <string name="result_history">Result History</string>
+    <string name="setting">Setting</string>
+    <string name="test_for_activity_2">test_for_activity_2</string>
+    <string name="back">BACK</string>
+    <string name="test_for_activity_3">test_for_activity_3</string>
+    <string name="test_for_activity_4">test_for_activity_4</string>
 </resources>

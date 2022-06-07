@@ -10,4 +10,8 @@
     <color name="yellow">#F2EA0A</color>
     <color name="green">#12F20A</color>
     <color name="pink">#f20a63</color>
+    <color name="light_green">#9EBC9F</color>
+    <color name="grey">#6E6B5E</color>
+    <color name="light_red">#796770</color>
+    <color name="light_yellow">#D3B88C</color>
 </resources>
