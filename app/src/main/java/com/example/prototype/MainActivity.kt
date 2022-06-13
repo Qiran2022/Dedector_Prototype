@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val firstActButton = findViewById<Button>(R.id.button)
         firstActButton.setOnClickListener {
-            val Intent = Intent(this,MainActivity2::class.java)
+            val Intent = Intent(this,camera_activity::class.java)
             startActivity(Intent)
         }
 
@@ -29,8 +29,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent)
         }
 
-    }
-    fun sendMessage(view: View) {
-        // Do something in response to button
     }
 }
