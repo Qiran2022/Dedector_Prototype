@@ -1,31 +1,30 @@
 package com.example.prototype
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.Manifest
+import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import java.util.concurrent.Executors
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.*
 import androidx.camera.video.VideoCapture
-import androidx.core.content.PermissionChecker
-import java.nio.ByteBuffer
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.prototype.databinding.CameraActvityBinding
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
-import android.provider.MediaStore
+import java.util.concurrent.Executors
 
-import android.content.ContentValues
-import android.os.Build
-import com.example.prototype.databinding.CameraActvityBinding
-
-import android.content.Intent
-import android.widget.Button
 
 typealias LumaListener = (luma: Double) -> Unit
 
@@ -36,6 +35,8 @@ class camera_activity : AppCompatActivity() {
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
+
+    private var PICK_IMAGE = 0
 
     private lateinit var cameraExecutor: ExecutorService
 
@@ -60,7 +61,33 @@ class camera_activity : AppCompatActivity() {
         /* viewBinding.videoCaptureButton.setOnClickListener { captureVideo() }*/
 
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        val firstActButton = findViewById<ImageButton>(R.id.imageButton)
+        firstActButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            startActivityForResult(intent, PICK_IMAGE)
+
+
+            //val intent = Intent(
+            //    Intent.ACTION_PICK,
+            //    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+           // )
+            //intent.type = "image/*"
+           // startActivityForResult(intent, 1);
+
+        }
     }
+
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                PICK_IMAGE ->  Toast.makeText(baseContext, "PICK_IMAGE:"+data, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     private fun takePhoto() {
         // Get a stable reference of the modifiable image capture use case

@@ -15,8 +15,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="298dp"
-        android:layout_marginLeft="294dp"
-        android:layout_marginBottom="83dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginBottom="58dp"
         android:backgroundTint="@color/light_green"
         android:text="@string/back"
         android:visibility="visible"
@@ -36,7 +36,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </androidx.camera.view.PreviewView>
 
     <Button
         android:id="@+id/came_shoot"
@@ -45,13 +47,25 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginRight="112dp"
-        android:layout_marginBottom="171dp"
-        android:text="Shoot shoot (◍•ᴗ•◍)"
+        android:layout_marginRight="104dp"
+        android:layout_marginBottom="150dp"
         android:backgroundTint="@color/light_green"
+        android:text="Shoot shoot (◍•ᴗ•◍)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/came_previewView" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="26dp"
+        android:src="@drawable/image_button_icon"
+        tools:srcCompat="@tools:sample/avatars" />
+
 
 </RelativeLayout>
