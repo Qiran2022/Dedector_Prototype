@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Project/Dedector_Prototype/app/src/main/res/layout/camera_actvity.xml" value="0.4" />
-        <entry key="..\:/debug/20220614/Dedector_Prototype/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
-        <entry key="..\:/debug/20220614/Dedector_Prototype/app/src/main/res/layout/camera_actvity.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Dedector_Prototype20220630/Dedector_Prototype/app/src/main/res/layout/activity_image_show.xml" value="0.32135416666666666" />
+        <entry key="..\:/Users/Administrator/Desktop/Dedector_Prototype20220630/Dedector_Prototype/app/src/main/res/layout/activity_main.xml" value="0.15260416666666668" />
+        <entry key="..\:/Users/Administrator/Desktop/Dedector_Prototype20220630/Dedector_Prototype/app/src/main/res/layout/activity_show.xml" value="0.1" />
+        <entry key="..\:/android project/Dedector_Prototype/app/src/main/res/layout/activity_image_show.xml" value="0.35989583333333336" />
+        <entry key="..\:/android project/Dedector_Prototype/app/src/main/res/layout/activity_show.xml" value="0.35989583333333336" />
       </map>
     </option>
   </component>

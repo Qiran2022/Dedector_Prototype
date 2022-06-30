@@ -18,8 +18,8 @@ class Analysis : AppCompatActivity() {
         }
         val pickphoto = findViewById<ImageButton>(R.id.imageButton)
         pickphoto.setOnClickListener{
-            val intent = MXPickerBuilder().setMaxSize(3).createIntent(this)
-            startActivityForResult(intent,0x22)
+            //val intent = MXPickerBuilder().setMaxSize(3).createIntent(this)
+            //startActivityForResult(intent,0x22)
         }
     }
 }

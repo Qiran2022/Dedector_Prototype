@@ -9,8 +9,8 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -20,6 +20,7 @@ import androidx.camera.video.VideoCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.prototype.databinding.CameraActvityBinding
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -39,6 +40,9 @@ class camera_activity : AppCompatActivity() {
     private var PICK_IMAGE = 0
 
     private lateinit var cameraExecutor: ExecutorService
+
+    var CAMERA_CODE = 0
+    lateinit var picture_scene_img: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +108,8 @@ class camera_activity : AppCompatActivity() {
             }
         }
 
+        val path = filesDir.absolutePath + File.separator + System.currentTimeMillis() + ".jpg"
+        var photoFile= File(path)
         // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions
             .Builder(contentResolver,
@@ -121,11 +127,25 @@ class camera_activity : AppCompatActivity() {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
 
-                override fun
-                        onImageSaved(output: ImageCapture.OutputFileResults){
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
+                override fun onImageSaved(output: ImageCapture.OutputFileResults){
+                    //val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
+                    val msg = "photo capture successfully"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
+                    Log.e(TAG, msg)
+
+                    val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                    val cursor =
+                        output.savedUri?.let { contentResolver.query(it, filePathColumn, null, null, null) }
+                    cursor?.moveToFirst()
+                    val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
+                    val picturePath = columnIndex?.let { cursor?.getString(it) }
+
+                    if (picturePath != null) {
+                        Log.e(TAG, picturePath)
+                    }
+                    startActivity(Intent(this@camera_activity,ImageShowActivity::class.java).apply {
+                        putExtra("path",picturePath)
+                    })
                 }
             }
         )
